@@ -36,6 +36,12 @@ class SlugConverter(StringConverter):
     regex = '[-a-zA-Z0-9_]+'
 
 
+class UnicodeSlugConverter(SlugConverter):
+    # This is the unanchored form of the core.validators.slug_unicode_re
+    # pattern:
+    regex = r'[-\w]+'
+
+
 class PathConverter(StringConverter):
     regex = '.+'
 
@@ -44,6 +50,7 @@ DEFAULT_CONVERTERS = {
     'int': IntConverter(),
     'path': PathConverter(),
     'slug': SlugConverter(),
+    'uslug': UnicodeSlugConverter(),
     'str': StringConverter(),
     'uuid': UUIDConverter(),
 }
